@@ -228,7 +228,7 @@
         if($result)
         {
             echo "<script>alert('Login successfully')</script>";
-            echo "<script>window.open('welcome_project.php','_self')</script>";
+            echo "<script>window.open('login_project.php','_self')</script>";
         }
     
     }
@@ -244,7 +244,7 @@
         if($result)
         {
             echo "<script>alert('Login successfully')</script>";
-            echo "<script>window.open('welcome_district.php' )</script>";
+            echo "<script>window.open('login_district.php','_self' )</script>";
         }
     
     }   
@@ -260,7 +260,7 @@ if(isset($_POST['sector_log']))
     if($result)
     {
         echo "<script>alert('Login successfully')</script>";
-        echo "<script>window.open('welcome_sector.php')</script>";
+        echo "<script>window.open('login_sector.php','_self')</script>";
     }
 
 }   

@@ -1,3 +1,38 @@
+<?php
+        session_start();
+        include "../connection/config.php";
+        
+        if (isset($_POST['login'])) {
+            $name = $_POST['name'];
+            $password = $_POST['password'];
+            //$loginType = 'District'; // Change accordingly for sector and project
+        
+            $sql = "SELECT * FROM sector_new WHERE name='$name' AND password='$password'";
+            $result = mysqli_query($con, $sql);
+        
+            if (mysqli_num_rows($result) == 1) {
+                $user = mysqli_fetch_assoc($result);
+                if ($user['status'] == 'active') {
+
+                     // Set session variables
+                $_SESSION['name'] = $user['name'];
+                $_SESSION['district'] = $user['district'];
+                $_SESSION['block'] = $user['sector'];
+                $_SESSION['sector'] = $user['sector'];
+
+                    echo "<script>alert('Login successful');</script>";
+                    // Redirect to the dashboard or another page
+                    echo "<script>window.location.href='dashboard.php';</script>";
+                } else {
+                    echo "<script>alert('Account not active. Please update your password.');</script>";
+                    echo "<script>window.location.href='update_sector_password.php?name=$name';</script>";
+                }
+            } else {
+                echo "<script>alert('Invalid credentials');</script>";
+            }
+        }
+    
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sector Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login_DPS_css.css">
 </head>
 
 <body>
@@ -37,35 +72,7 @@
         <p>Not registered yet? <a href='Signin_sector.php'>Register Here</a></p>
         </div>
 
-        <?php
-        include "../connection/config.php";
-        
-        if (isset($_POST['login'])) {
-            $name = $_POST['name'];
-            $password = $_POST['password'];
-            //$loginType = 'District'; // Change accordingly for sector and project
-        
-            $sql = "SELECT * FROM sector_new WHERE name='$name' AND password='$password'";
-            $result = mysqli_query($con, $sql);
-        
-            if (mysqli_num_rows($result) == 1) {
-                $user = mysqli_fetch_assoc($result);
-                if ($user['status'] == 'active') {
-                    echo "<script>alert('Login successful');</script>";
-                    // Redirect to the dashboard or another page
-                    // For example: echo "<script>window.location.href='dashboard.php';</script>";
-                } else {
-                    echo "<script>alert('Account not active. Please update your password.');</script>";
-                    echo "<script>window.location.href='update_sector_password.php?name=$name';</script>";
-                }
-            } else {
-                echo "<script>alert('Invalid credentials');</script>";
-            }
-        }
-        
-        
-        
-        ?>
+      
         
 </body>
 </html>

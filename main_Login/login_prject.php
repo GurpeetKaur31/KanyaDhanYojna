@@ -53,7 +53,7 @@
                 if ($user['status'] == 'active') {
                     echo "<script>alert('Login successful');</script>";
                     // Redirect to the dashboard or another page
-                    // For example: echo "<script>window.location.href='dashboard.php';</script>";
+                    echo "<script>window.location.href='dashboard_project.php';</script>";
                 } else {
                     echo "<script>alert('Account not active. Please update your password.');</script>";
                     echo "<script>window.location.href='update_project_password.php?name=$name';</script>";

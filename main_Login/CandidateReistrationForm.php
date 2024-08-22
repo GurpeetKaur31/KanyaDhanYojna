@@ -20,7 +20,7 @@ $defaultBlock = isset($_GET['block']) ? htmlspecialchars($_GET['block']) : '';
     </head>
     <body>
         <center><h1>Candidate Registration Form</h1></center>
-        <form action="" method="POST" class="form-group">
+        <form action="submit_registration.php" method="POST" class="form-group">
             <table>
                 <tr>
                     <th>S.No</th>
@@ -47,7 +47,7 @@ $defaultBlock = isset($_GET['block']) ? htmlspecialchars($_GET['block']) : '';
                     <td>3</td>
                     <td>Gram<span class="required">*</span></td>
                     <td>
-                    <select id="gram" name="gram" required >
+                    <select id="gram" name="gram"  >
                             <option value="">Select Gram</option>
                             <!-- Options will be loaded dynamically -->
                         </select>
@@ -58,7 +58,7 @@ $defaultBlock = isset($_GET['block']) ? htmlspecialchars($_GET['block']) : '';
                     <td>4</td>
                     <td>Village<span class="required">*</span></td>
                     <td>
-                    <select id="village" name="village" required >
+                    <select id="village" name="village"  >
                             <option value="">Select Village</option>
                             <!-- Options will be loaded dynamically -->
                         </select>

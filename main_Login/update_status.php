@@ -1,4 +1,4 @@
-<?php
+<!-- php
 include '../connection/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,4 +20,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 mysqli_close($conn);
+?> -->
+
+<?php
+include '../connection/config.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $status = $_POST['status'];
+
+    $sql = "UPDATE candidates SET status = '$status' WHERE id = '$id'";
+    if (mysqli_query($con, $sql)) {
+        if ($status == 'Approved') {
+            // Insert a record into the payments table for the approved candidate
+            $insert_payment_sql = "INSERT INTO payments (candidate_id) VALUES ('$id')";
+            mysqli_query($con, $insert_payment_sql);
+        }
+        header("Location: dashboard_project.php");
+    } else {
+        echo "Error updating record: " . mysqli_error($con);
+    }
+}
 ?>
+

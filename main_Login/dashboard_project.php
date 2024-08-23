@@ -21,7 +21,7 @@
     ?>
     <div class=" mt-2">
         <h3 class="text-center mb-3">Account Details</h3>
-        <table class="table table-bordered">
+        <table id="display" class="table table-bordered">
             <thead>
                 <tr>
                 <th>District</th>

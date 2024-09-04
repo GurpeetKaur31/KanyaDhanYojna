@@ -10,7 +10,7 @@ $candidate_id = $_GET['candidate_id'];
 
 // Fetch candidate and payment details
 $sql = "SELECT c.*, p.amount, p.payment_date FROM candidates c 
-    LEFT JOIN payments p ON c.id = p.candidate_id
+    LEFT JOIN payments p ON c.candidate_id = p.candidate_id
     WHERE c.id = '$candidate_id'";
 $result = mysqli_query($con, $sql) or die("Error fetching data");
 
@@ -27,6 +27,10 @@ $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(0, 10, 'Candidate Payment Receipt', 0, 1, 'C');
 
 $pdf->SetFont('Arial', '', 12);
+
+$pdf->Cell(50, 10, 'candidate is:', 1);
+$pdf->Cell(0, 10, $row['candidate_id'], 1, 1);
+
 
 $pdf->Cell(50, 10, 'District:', 1);
 $pdf->Cell(0, 10, $row['district'], 1, 1);

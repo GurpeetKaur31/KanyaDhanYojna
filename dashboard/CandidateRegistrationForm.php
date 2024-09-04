@@ -10,6 +10,7 @@ $defaultBlock = isset($_GET['block']) ? htmlspecialchars($_GET['block']) : '';
 $x = "KD";
 $y = rand(1000, 9999); // Generates a random number between 1000 and 9999
 $candidate_id = $x . $y;
+// echo $candidate_id;
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -33,6 +34,11 @@ $candidate_id = $x . $y;
                     <th>Value</th>
                 </tr>
                 <tr>
+                    <td>0</td>
+                    <td>candidate id</td>
+                    <td><input type="text" name="candidate_id" value="<?php echo $candidate_id; ?>" readonly></td>
+                </tr>
+                <tr>
                     <td>1</td>
                     <td>District</td>
                     <td>
@@ -48,13 +54,13 @@ $candidate_id = $x . $y;
                     <span class="error-message"></span>
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>3</td>
                     <td>Gram<span class="required">*</span></td>
                     <td>
                     <select id="gram" name="gram"  >
                             <option value="">Select Gram</option>
-                            <!-- Options will be loaded dynamically -->
+                           
                         </select>
                         <span class="error-message"></span>
                     </td>
@@ -65,11 +71,11 @@ $candidate_id = $x . $y;
                     <td>
                     <select id="village" name="village"  >
                             <option value="">Select Village</option>
-                            <!-- Options will be loaded dynamically -->
+                           
                         </select>
                         <span class="error-message"></span>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td>5</td>
                     <td>Area Type<span class="required">*</span></td>
@@ -86,7 +92,7 @@ $candidate_id = $x . $y;
                     <td>6</td>
                     <td>Guardian UID / Aadhar No<span class="required">*</span></td>
                     <td>
-                        <input type="text" id="guardian_aadhar" name="guardian_aadhar" placeholder="Enter 12 digit UID/Aadhar No." required>
+                        <input type="text" id="guardian_aadhar" name="guardian_aadhar" maxlength="12"  placeholder="Enter 12 digit UID/Aadhar No." required>
                         <span class="error-message"></span>
                     </td>
                 </tr>
@@ -102,7 +108,7 @@ $candidate_id = $x . $y;
                     <td>8</td>
                     <td>Candidate UID / Aadhar No<span class="required">*</span></td>
                     <td>
-                        <input type="text" id="candidate_aadhar" name="candidate_aadhar" placeholder="Enter 12 digit UID/Aadhar No." required>
+                        <input type="text" id="candidate_aadhar" name="candidate_aadhar" maxlength="12" placeholder="Enter 12 digit UID/Aadhar No." required>
                         <span class="error-message"></span>
                     </td>
                 </tr>

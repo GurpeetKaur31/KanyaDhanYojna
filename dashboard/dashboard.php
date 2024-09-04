@@ -128,6 +128,7 @@ $result = mysqli_query($con, $sql) or die("Error");
             <table id="candidateTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>candidate id</th>
                         <th>District</th>
                         <th>Block</th>
                         <th>Area Type</th>
@@ -154,6 +155,7 @@ $result = mysqli_query($con, $sql) or die("Error");
                     if ($result && mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>
+                                <td>{$row['candidate_id']}</td>
                                 <td>{$row['district']}</td>
                                 <td>{$row['block']}</td>
                                 <td>{$row['area_type']}</td>
@@ -172,7 +174,7 @@ $result = mysqli_query($con, $sql) or die("Error");
                                 <td>{$row['contact_no']}</td>
                                 <td>";
                                     if (empty($row['payment_id'])) {
-                                        echo "<a href='add_payment.php?candidate_id={$row['id']}' class='btn btn-primary btn-sm'>Add Payment</a>";
+                                        echo "<a href='add_payment.php?id={$row['id']}' class='btn btn-primary btn-sm'>Add Payment</a>";
                                     } else {
                                         echo "<span class='text-muted'>No Payment Info</span>";
                                     }

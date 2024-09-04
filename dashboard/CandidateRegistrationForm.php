@@ -6,7 +6,10 @@ session_start();
 $defaultDistrict = isset($_GET['district']) ? htmlspecialchars($_GET['district']) : '';
 $defaultBlock = isset($_GET['block']) ? htmlspecialchars($_GET['block']) : '';
 
-// Simulate fetching other data if needed
+// Generate candidate_id
+$x = "KD";
+$y = rand(1000, 9999); // Generates a random number between 1000 and 9999
+$candidate_id = $x . $y;
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -21,6 +24,8 @@ $defaultBlock = isset($_GET['block']) ? htmlspecialchars($_GET['block']) : '';
     <body>
         <center><h1>Candidate Registration Form</h1></center>
         <form action="submit_registration.php" method="POST" class="form-group">
+             <!-- Hidden field to store candidate_id -->
+            <input type="hidden" name="candidate_id" value="<?php echo $candidate_id; ?>">
             <table>
                 <tr>
                     <th>S.No</th>
